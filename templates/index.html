@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>hello world my blog</title>
+</head>
+<body>
+    <h1>hello my name:Abliz</h1>
+    <hr>
+    {%  for post in posts %}
+    <p style="font-size: 16pt;font-weight: bold;">{{post.title}}</p>
+    <p style="font-size: 10pt;letter-spacing: 1pt;">{{post.body}}</p>
+    {% endfor %}
+    <hr>
+<h3>time:{{now}}</h3>
+</body>
+</html>
