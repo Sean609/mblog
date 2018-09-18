@@ -37,7 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'mainsite'
+    'mainsite',
+    'ckeditor',
 ]
 
 MIDDLEWARE = [
@@ -121,3 +122,6 @@ USE_TZ = False
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'collectstatic')
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
+
+#ckeditor
+CKEDITOR_JQUERY_URL ='https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js'

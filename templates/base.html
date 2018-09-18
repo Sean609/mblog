@@ -3,24 +3,93 @@
 <head>
     <meta charset="UTF-8">
     <title>{%block title %} {%endblock %}</title>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+   <!-- Bootstrap core CSS -->
+    <link href="../static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="../static/bootstrap/css/blog.css" rel="stylesheet">
+
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <!--<link href="../static/bootstrap/css/blog.css" rel="stylesheet">-->
 </head>
 <body>
-<div class="container-fluid">
-    {% include 'header.html' %}
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            {% block headmessage %} {% endblock %}
+<div class="container">
+{% include 'header.html' %}
+
+
+
+    <div class="row">
+
+        <div class="col-sm-8 blog-main">
+
+            <!--content-->
+
+        {% block headmessage %}
+            <h3>本站文章列表</h3>
+
+    {% endblock %}
+    {% block content %}
+   <div class="blog-post">
+        {% for post in posts %}
+
+            <h2 class="blog-post-title"><a href="/post/{{post.slug}}">{{ post.title }}</a></h2>
+            <p class="blog-post-meta">{{ post.pub_date }} <a href="#">Jacob</a></p>
+
+            <p style="font-size: 14pt">{{ post.body | truncatechars:300 }}</p>
+
+    {% endfor %}
+   </div>
+    {% endblock %}
+            <!--end content-->
+
+
+    <nav>
+            <ul class="pager">
+              <li><a href="/">首页</a></li>
+              <li><a href="#">Next</a></li>
+            </ul>
+          </nav>
         </div>
-        <div class="panel-body">
-            {%block content%} {% endblock %}
-        </div>
-        <div class="panel-footer">
-            {% include 'footer.html' %}
+
+        <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+          <div class="sidebar-module sidebar-module-inset">
+            <h4>About</h4>
+            <p>Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
+          </div>
+          <div class="sidebar-module">
+            <h4>Archives</h4>
+            <ol class="list-unstyled">
+              <li><a href="#">March 2014</a></li>
+              <li><a href="#">February 2014</a></li>
+              <li><a href="#">January 2014</a></li>
+              <li><a href="#">December 2013</a></li>
+              <li><a href="#">November 2013</a></li>
+              <li><a href="#">October 2013</a></li>
+              <li><a href="#">September 2013</a></li>
+              <li><a href="#">August 2013</a></li>
+              <li><a href="#">July 2013</a></li>
+              <li><a href="#">June 2013</a></li>
+              <li><a href="#">May 2013</a></li>
+              <li><a href="#">April 2013</a></li>
+            </ol>
+          </div>
+
+            <div class="sidebar-module">
+            <h4>Elsewhere</h4>
+            <ol class="list-unstyled">
+              <li><a href="#">GitHub</a></li>
+              <li><a href="#">Twitter</a></li>
+              <li><a href="#">Facebook</a></li>
+            </ol>
+          </div>
         </div>
     </div>
 </div>
+    {% include 'footer.html' %}
+
 
 </body>
 </html>
